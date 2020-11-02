@@ -4,8 +4,8 @@ CFLAGS		= -mmcu=${CPU} -I../h
 LDFLAGS		= -L/pot/ti/msp430_gcc/include
 
 
-CC		= msp430-eld-gcc
-AS		= msp430-eld-as
+CC		= msp430-elf-gcc
+AS		= msp430-elf-as
 
 all: main.elf
 
@@ -29,4 +29,4 @@ main.o: main.c
 
 WD_Interupt.o: state_machine.h buzzer.h
 
-P2_Interupt_Handler.o: switches.h
+P2_Interupt_Handler.o: P2_Interupt_Handler.c switches.h
