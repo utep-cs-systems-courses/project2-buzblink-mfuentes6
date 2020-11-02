@@ -19,7 +19,7 @@ load: main.elf
 clean:
 	rm -f *.o *.elf
 
-led.0: led.c led.h
+led.o: led.c led.h
 
 buzzer.o: buzzer.c buzzer.h
 
