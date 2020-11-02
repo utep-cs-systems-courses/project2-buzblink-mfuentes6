@@ -1,4 +1,4 @@
-#include <msp.430.h>
+#include <msp430.h>
 
 
 
@@ -9,7 +9,7 @@ __interupt_vec(WDT_VECTOR)WDT(){
   static char blink_count = 0;
   if(++blink_count == speed){
     buzzer_set_period(speed);
-    led_update();
+    state_advance();
     blink_count = 0;
 
 }
