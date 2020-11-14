@@ -12,10 +12,10 @@ static int rate = 200;
 void buzzer_init()
 {
   timerAUpmode();
-  p2SEL2 &= ~(BIT6 | BIT7);
-  p2SEL &= ~BIT7;
-  p2SEL |= BIT6;
-  p2DIR = BIT6;
+  P2SEL2 &= ~(BIT6 | BIT7);
+  P2SEL &= ~BIT7;
+  P2SEL |= BIT6;
+  P2DIR = BIT6;
 
   buzzer_execute_frequency();
   
@@ -44,6 +44,6 @@ void resume_buzzer(){
 
 void buzzer_set_period(short cycles)
 {
-  CCRO = cycles;
+  CCR0 = cycles;
   CCR1 = cycles >> 1;
 }

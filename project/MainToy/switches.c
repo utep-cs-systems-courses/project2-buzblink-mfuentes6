@@ -5,7 +5,7 @@
 #include "buzzer.h"
 #include "state_machine.h"
 
-
+char switch_state_changed;
 char speed;
 short note;
 

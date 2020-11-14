@@ -5,7 +5,7 @@
 #include "buzzer.h"
 #include "state_machine.h"
 
-
+char switch_state_changed;
 unsigned char red_on = 0, green_on = 0;
 unsigned char leds_changed = 0;
 char speed = 10;
@@ -25,7 +25,7 @@ void led_update()
   if(switch_state_changed == 1){
     char ledFlags = 0;
     ledFlags = redVal[red_on] | greenVal[green_on];
-    P1OUT &= (0xff^LEDS) ledFlags;
+    P1OUT &= (0xff^LEDS) | ledFlags;
   }
   buzzer_set_period(note);
   switch_state_changed = 0;

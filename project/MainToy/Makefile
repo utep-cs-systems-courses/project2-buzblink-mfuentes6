@@ -1,7 +1,7 @@
 COMMON_OBJECTS =
 CPU		= msp430g2553
 CFLAGS		= -mmcu=${CPU} -I../h
-LDFLAGS		= -L/pot/ti/msp430_gcc/include
+LDFLAGS		= -L/opt/ti/msp430_gcc/include
 
 
 CC		= msp430-elf-gcc
