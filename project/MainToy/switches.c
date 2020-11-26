@@ -6,7 +6,7 @@
 #include "state_machine.h"
 
 char switch_state_changed;
-char speed;
+short speed;
 short note;
 
 static char switch_update_interrupt_sense(){
@@ -38,26 +38,27 @@ void switch_interupt_handler(){
   if(B1){
     note = 2000; //buzzer note
     speed = 200; //speed which leds are lit and unlit
-    led_update();
     buzzer_set_period(note);
+    do_dim = 0;
   }
 
   if(B2){
-    note = 4000; 
-    speed = 3;
-    led_update();
+    note = 7000; 
+    speed = 300;
     buzzer_set_period(note);
+    do_dim = 0;
   }
 
-  if(B3){// will turn off buzzer
-    stop_buzzer();
-    speed = 50;
-    led_update();
+  if(B3){
+    speed = 150;//
+    note = 1000;
+    dimmer = 0;
+    do_dim = 1;
   }
 
-  if(B4){ //turns buzzer back on
-    resume_buzzer(1000);
-    speed = 1;
-    led_update();
+  if(B4){
+    buzzer_set_period(400);
+    speed = 750;
+    do_dim = 0;
   }
 }

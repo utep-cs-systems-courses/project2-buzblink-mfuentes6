@@ -10,8 +10,8 @@ AS		= msp430-elf-as
 all: main.elf
 
 
-main.elf: ${COMMON_OBJECTS} P2_Interupt_Handler.o WD_Interupt.o buzzer.o led.o switches.o main.o
-	../lib/libTimer.a ${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
+main.elf: ${COMMON_OBJECTS} main.o state_machine.o P2_Interupt_Handler.o WD_Interupt.o buzzer.o led.o switches.o ../lib/libTimer.a
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: main.elf
 	msp430loader.sh main.elf
@@ -30,3 +30,5 @@ main.o: main.c
 WD_Interupt.o: state_machine.h buzzer.h
 
 P2_Interupt_Handler.o: P2_Interupt_Handler.c switches.h
+
+state_machine.0: led.h state_machine.h
